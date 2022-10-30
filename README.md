@@ -1,0 +1,1 @@
+The International Bittering Units, or IBU, scale is used to quantify the bitterness of a beer. In this project, I've built a machine learning model to predict the IBU of a beer, given other attributes about the beer, including its color, alcohol content, and other features.
