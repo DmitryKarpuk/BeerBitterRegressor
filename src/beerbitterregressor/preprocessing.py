@@ -17,14 +17,14 @@ def clean_data(df):
     # convert isOrganic column into numeric
     df.isOrganic = (df.isOrganic == 'Y').astype('int32')
     # clip originalGravity
-    df.originalGroriginalGravityavity = df.originalGravity.clip(upper=1.13)
+    df.originalGravity = df.originalGravity.clip(upper=1.13)
     # limit ibu if train preparation
     if 'ibu' in df.columns:
         df.ibu = df.ibu.clip(upper=120)
     return df
 
 
-def add_new_features(df)
+def add_new_features(df):
     df['abv_mul_grav'] = df.abv * df.originalGravity
     df['abv_mul_srm'] = df.abv * df.srm
     df['srm_div_abv'] = df.srm / df.abv
