@@ -22,6 +22,9 @@ black = "^22.10.0"
 train = "beerbitterregressor.train:train"
 predict = "beerbitterregressor.predict:predict"
 
+[tool.black]
+line-length = 79
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
