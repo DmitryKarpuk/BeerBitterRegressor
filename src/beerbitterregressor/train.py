@@ -49,10 +49,12 @@ def train(
     data = pd.read_csv(dataset_path)
     df = clean_data(data)
     df = add_new_features(df).reset_index(drop=True)
+    train_features = [x for x in df.columns if x != 'ibu']
     y_train = df['ibu'].values
-    X_train = df.drop(['ibu'], axis=1).reset_index(drop=True)
-    cat_features_idx = [list(X_train.columns).index(i)
-                                 for i in CAT_FEATURES]
+    X_train = df[train_features].values
+    cat_features_idx = [train_features.index(i)
+                        for i in CAT_FEATURES
+                        ]
     train_pool = Pool(X_train, y_train, cat_features=cat_features_idx)
 
 # Train and save model

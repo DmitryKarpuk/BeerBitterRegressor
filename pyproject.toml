@@ -20,6 +20,7 @@ black = "^22.10.0"
 
 [tool.poetry.scripts]
 train = "beerbitterregressor.train:train"
+predict = "beerbitterregressor.predict:predict"
 
 [build-system]
 requires = ["poetry-core"]
