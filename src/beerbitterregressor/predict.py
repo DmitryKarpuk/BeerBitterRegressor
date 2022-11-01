@@ -42,8 +42,7 @@ def predict(
     data = pd.read_csv(dataset_path, index_col=["id"])
     df = clean_data(data)
     df = add_new_features(df)
-    test_features = [x for x in df.columns if x != "ibu"]
-    X = df[test_features].reset_index(drop=True)
+    X = df.reset_index(drop=True)
     cat_features_idx = [list(df.columns).index(i) for i in CAT_FEATURES]
     X_pool = Pool(X, cat_features=cat_features_idx)
     # Predict on a Pandas DataFrame.
