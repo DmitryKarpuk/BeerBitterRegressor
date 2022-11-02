@@ -1,8 +1,9 @@
 from flask import Flask, request, jsonify, Response
 from catboost import CatBoostRegressor, Pool
 import pandas as pd
+import click
 
-from ..preprocessing import clean_data, add_new_features
+from beerbitterregressor.preprocessing import clean_data, add_new_features
 
 CAT_FEATURES = ["available", "glass"]
 MODEL_PATH = "models/model.cbn"
@@ -25,6 +26,6 @@ def predict() -> Response:
     result = {"beer bitter": float(pred)}
     return jsonify(result)
 
-
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0", port=9696)
+
