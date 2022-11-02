@@ -1,16 +1,13 @@
 import pandas as pd
 import numpy as np
 
+SRM_OVER_MEAN = 60 #constant calculated in eda
 
 def clean_data(df):
     # Drop text features
     df.drop(columns=["description", "name"], inplace=True)
     # prepare srm feature
-    srm_over_40_idx = (pd.to_numeric(df[df.srm != "Over 40"].srm) > 40).values
-    num_srm = pd.to_numeric(df[df.srm != "Over 40"].srm)
-    srm_over_40_mean = int(num_srm[num_srm > 40].mean())
-    srm_over_40_mean
-    df.replace({"srm": {"Over 40": str(srm_over_40_mean)}}, inplace=True)
+    df.replace({"srm": {"Over 40": str(SRM_OVER_MEAN)}}, inplace=True)
     df = df.astype({"srm": "int32"})
     # replace nan values of feature glass
     df.glass = df.glass.fillna("Nglass")

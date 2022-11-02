@@ -47,6 +47,7 @@ def predict(
     X_pool = Pool(X, cat_features=cat_features_idx)
     # Predict on a Pandas DataFrame.
     pred = _predict(X_pool, model_path)
+    pred = np.round_(pred, 2)
     submission = pd.DataFrame({"ibu": pred}, index=df.index)
     submission.to_csv(submission_path)
     click.echo(

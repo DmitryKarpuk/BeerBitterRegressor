@@ -15,15 +15,15 @@ app = Flask('beer_bitter')
 
 @app.route('/predict', methods=['POST'])
 def predict() -> Response:
-    beer = request.get_json()
+    beer = pd.DataFrame(request.get_json(), index=[0])
     # Prepare input data
     beer = add_new_features(clean_data(beer))
     X = beer.reset_index(drop=True)
     cat_features_idx = [list(beer.columns).index(i) for i in CAT_FEATURES]
     X_pool = Pool(X, cat_features=cat_features_idx)
     # Predict
-    pred = round(model.predict(X_pool), 2)
-    result = {"beer bitter": float(pred)}
+    pred = model.predict(X_pool)
+    result = {"beer bitter": round(float(pred), 2)}
     return jsonify(result)
 
 if __name__ == "__main__":
