@@ -1,10 +1,11 @@
 FROM python:3.9.12
 RUN pip install --upgrade pip
 RUN pip install poetry
-COPY ["./models/model.cbn", "app/models"]
-COPY ["./poetry.lock", "./pyproject.toml", "./app/"]
-COPY ["./src/beerbitterregressor/app/app.py", "./app/"]
 WORKDIR /app
+COPY ["./models/model.cbn", "./"]
+COPY ["./poetry.lock", "./pyproject.toml", "./"]
+COPY ["./src/beerbitterregressor/app/app.py", "./"]
+COPY ["./src/beerbitterregressor/preprocessing.py", "./"]
 RUN poetry config virtualenvs.create false \
     && poetry install --without dev --no-interaction --no-ansi
 EXPOSE 9696
