@@ -1,7 +1,19 @@
+from pandas import DataFrame
+
+
 SRM_OVER_MEAN = 60  # constant calculated in eda
 
 
-def clean_data(df):
+def clean_data(df: DataFrame) ->DataFrame:
+    '''
+    Prepare data for training and predicting.
+
+    Args:
+        df: Raw data.
+ 
+    Return:
+        DataFrame of cleaned data.
+    '''
     # Drop text features
     df.drop(columns=["description", "name"], inplace=True)
     # prepare srm feature
@@ -19,7 +31,16 @@ def clean_data(df):
     return df
 
 
-def add_new_features(df):
+def add_new_features(df: DataFrame) ->DataFrame:
+    '''
+    Add new features to data.
+
+    Args:
+        df: Cleaned data.
+ 
+    Return:
+        DataFrame with new features.
+    '''
     df["abv_mul_grav"] = df.abv * df.originalGravity
     df["abv_mul_srm"] = df.abv * df.srm
     df["srm_div_abv"] = df.srm / df.abv

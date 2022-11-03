@@ -38,7 +38,16 @@ def train(
     param_path: Path,
 ) -> None:
     """
-    Trains a catboost model on beer dataset with ertain parameters.
+    Train a catboost model on beer dataset with сertain parameters.
+    Save trained model to .cbn file.
+    
+    Args:
+        dataset_path: Path of file with data of beer.
+        model_path: Path of model file.
+        param_path: Path of model parameters.
+ 
+    Return:
+        None
     """
 
     # Make model and load parameters

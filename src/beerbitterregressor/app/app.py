@@ -2,11 +2,14 @@ from flask import Flask, request, jsonify, Response
 from catboost import CatBoostRegressor, Pool
 import pandas as pd
 
+# Define package path and madel path based on invoke source
 if __name__ == "app":
+    # Invokes from docker
     from preprocessing import clean_data, add_new_features
 
     MODEL_PATH = "model.cbn"
 else:
+    # Invokes directly
     from beerbitterregressor.preprocessing import clean_data, add_new_features
 
     MODEL_PATH = "models/model.cbn"

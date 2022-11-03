@@ -10,6 +10,16 @@ CAT_FEATURES = ["available", "glass"]
 
 
 def _predict(X: Pool, model_path: Path) -> np.ndarray:
+    '''
+    Predict bitterness of beer by using pretrained CatBoost model.
+
+    Args:
+        X: Pool with test data
+        model_path: Path of model file.
+    
+    Return:
+        Numpy array of prediction.
+    '''
     model = CatBoostRegressor()
     model.load_model(model_path)
     pred = model.predict(X)
@@ -38,6 +48,18 @@ def _predict(X: Pool, model_path: Path) -> np.ndarray:
 def predict(
     dataset_path: Path, submission_path: Path, model_path: Path
 ) -> None:
+    '''
+    Predict bitterness of beer by using pretrained CatBoost model.
+    Save prediction to csv file.
+    File format corresponds to Kaggle submission file format.  
+
+    Args:
+        dataset_path: Path of file with data of beer.
+        submission_path: Path of submission file.
+    
+    Return:
+        None.
+    '''
     # Load data and prepare data
     data = pd.read_csv(dataset_path, index_col=["id"])
     df = clean_data(data)
