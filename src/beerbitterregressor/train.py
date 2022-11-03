@@ -48,7 +48,7 @@ def train(
     model.set_params(**model_params)
 
     # Load and prepare data
-    data = pd.read_csv(dataset_path, index_col=['id'])
+    data = pd.read_csv(dataset_path, index_col=["id"])
     df = clean_data(data)
     df = add_new_features(df).reset_index(drop=True)
     train_features = [x for x in df.columns if x != "ibu"]

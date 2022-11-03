@@ -1,7 +1,5 @@
-import pandas as pd
-import numpy as np
+SRM_OVER_MEAN = 60  # constant calculated in eda
 
-SRM_OVER_MEAN = 60 #constant calculated in eda
 
 def clean_data(df):
     # Drop text features
