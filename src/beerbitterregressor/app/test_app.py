@@ -8,7 +8,7 @@ URL = "http://127.0.0.1:9696/predict"
 
 @click.command(help="Script with request for testing model app.")
 @click.option(
-    "-p",
+    "-d",
     "--data-path",
     default="config/test_inst.json",
     type=click.Path(exists=True, dir_okay=False, path_type=Path),

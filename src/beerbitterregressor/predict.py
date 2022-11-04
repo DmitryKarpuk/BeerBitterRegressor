@@ -56,6 +56,7 @@ def predict(
     Args:
         dataset_path: Path of file with data of beer.
         submission_path: Path of submission file.
+        model_path: Path of pretrainde model.
     
     Return:
         None.
