@@ -92,7 +92,7 @@ poetry install --without dev
 ```sh
 poetry run train -d <path to csv with data> -m <path to save trained model> -p <path to model params>
 ```
-### Predict**
+### Predict
 6. Run predict with the following command:
  ```sh
 poetry run predict -d <path to csv with data> -s <path to save result of prediction> -m <path of model> 
@@ -114,3 +114,7 @@ As a result, you can test service by using script src\beerbitterregressor\app\te
 ```
 poetry run test_app -d <path to .json with data>
 ```
+
+# Report
+
+Link to example of running this project you can find [there](https://drive.google.com/file/d/1oCcqPdqHfonRcY0PmwyThWowz7t2UVqx/view?usp=share_link).
